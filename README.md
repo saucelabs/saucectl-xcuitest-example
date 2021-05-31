@@ -13,7 +13,7 @@ our [documentation](https://docs.saucelabs.com/testrunner-toolkit/installation).
 curl -L https://saucelabs.github.io/saucectl/install | bash
 ```
 
-⚠ Make sure saucectl version is newer than **v0.42.0**
+⚠ Make sure saucectl version is newer than **v0.44.0**
 
 ### Set Your Sauce Labs Credentials
 
