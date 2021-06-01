@@ -20,4 +20,4 @@ test sauce:
   image: docker:${DOCKER_VERSION}
   stage: test
   script:
-    - saucectl run -c .sauce/config.yml --test-env sauce --ccy 10
+    - saucectl run -c .sauce/config.yml --ccy 10
