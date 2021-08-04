@@ -20,6 +20,4 @@ jobs:
       - name: Saucectl RUN Sauce Cloud
         uses: saucelabs/saucectl-run-action@v1
         with:
-          testing-environment: sauce
           concurrency: 10
-
