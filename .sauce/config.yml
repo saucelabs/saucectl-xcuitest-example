@@ -4,21 +4,20 @@ sauce:
   region: us-west-1
   concurrency: 1
   metadata:
-    name: Testing XCUITEST Support
     tags:
       - e2e
       - release team
       - other tag
-  build: Release $CI_COMMIT_SHORT_SHA
+    build: Release $CI_COMMIT_SHORT_SHA
 
 xcuitest:
-  app: ./apps/SauceLabs.Mobile.Sample.XCUITest.App.ipa
-  testApp: ./apps/SwagLabsMobileAppUITests-Runner.ipa
+  app: ./apps/SauceLabs-Demo-App.ipa
+  testApp: ./apps/SauceLabs-Demo-App-Runner.XCUITest.ipa
 
 suites:
   - name: "saucy xcuitest"
     testOptions:
-      class: ["SwagLabsMobileAppUITests.LoginTests/testSuccessfulLogin"]
+      class: ["My_Demo_AppUITests.My_Demo_AppUITests/testNavigateToCart"]
     devices:
       # If set, only device by ID will be queried.
       #- id: <rdc_device_id>
