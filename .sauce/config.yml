@@ -17,17 +17,16 @@ xcuitest:
 suites:
   - name: "saucy xcuitest"
     testOptions:
-      class: ["My_Demo_AppUITests.My_Demo_AppUITests/testNavigateToCart"]
+      notClass: ["My_Demo_AppUITests.NavigationTest"]
     devices:
       # If set, only device by ID will be queried.
       #- id: <rdc_device_id>
       - name: "iPhone.*"
-        platformVersion: "15.3.1"
         options:
           # If set, only devices with a SIM card will be queried.
           carrierConnectivity: false
           # Possible values [ANY,PHONE,TABLET]
-          deviceType: PHONE
+          deviceType: ANY
           # If set, only private devices will be queried.
           private: false
 
