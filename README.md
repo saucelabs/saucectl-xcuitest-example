@@ -24,7 +24,7 @@ saucectl configure
 ## Running The Examples
 
 Simply check out this repo, set your XCUITest test bundles and run the appropriate command below :rocket:
-
+:bulb: We also provide [DemoApp](DemoApp/) to demonstrate the test workflow. Click [here](.github/workflows/test.yml) for more details on how to build your XCUITest test bundle.
 ### In Sauce Cloud
 
 ```shell
