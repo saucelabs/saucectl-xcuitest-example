@@ -1,2 +1,18 @@
 .idea/
+*.DS_Store
+
 artifacts/
+
+# Ignore Xcode related files
+build/
+payload/
+Payload/
+*.ipa
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
