@@ -23,7 +23,7 @@ saucectl configure
 
 ## Running The Examples
 
-Simply check out this repo and run the appropriate command below :rocket:
+Simply check out this repo, set your XCUITest test bundles and run the appropriate command below :rocket:
 
 ### In Sauce Cloud
 
@@ -31,7 +31,7 @@ Simply check out this repo and run the appropriate command below :rocket:
 APP=<your-app-ipa-file> TEST_APP=<your-test-app-ipa-file> saucectl run
 ```
 
-:bulb: Click [here](.github/workflows/test.yml) for more details on how to build your XCUITest test bundle.
+:bulb: We also provide [DemoApp](DemoApp/) to demonstrate the test work flow. Click [here](.github/workflows/test.yml) to check more details for how to build your XCUITest test bundles.
 
 ![sauce cloud example](assets/sauce_cloud_example.gif)
 

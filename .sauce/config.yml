@@ -16,7 +16,6 @@ xcuitest:
 
 suites:
   - name: "saucy xcuitest"
-    testOptions:
     devices:
       # If set, only device by ID will be queried.
       #- id: <rdc_device_id>
