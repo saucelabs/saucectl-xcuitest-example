@@ -31,7 +31,7 @@ Simply check out this repo and run the appropriate command below :rocket:
 saucectl run --env APP=<your-app-ipa-file> --env TEST_APP=<your-test-app-ipa-file>
 ```
 
-:bulb: Click [here](.github/workflows/test.yml) to check more details for how to build your XCUITest test bundle.
+:bulb: Click [here](.github/workflows/test.yml) for more details on how to build your XCUITest test bundle.
 
 ![sauce cloud example](assets/sauce_cloud_example.gif)
 
