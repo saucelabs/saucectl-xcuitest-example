@@ -9,15 +9,57 @@ on:
 env:
   SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+  APP: DemoApp.ipa
+  TEST_APP: DemoAppUITests-Runner.ipa
 
 jobs:
+  build:
+    runs-on: macos-12
+    env:
+      xcode-version: 14.2
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup XCode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: ${{ env.xcode-version }}
+      - name: Build XCUITest Artifacts
+        working-directory: DemoApp/
+        run: |
+          xcodebuild \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
+            clean build-for-testing \
+            -project DemoApp.xcodeproj \
+            -scheme "DemoApp" \
+            -sdk iphoneos \
+            -configuration Debug \
+            -derivedDataPath build
+          cd build/Build/Products/Debug-iphoneos
+          mkdir Payload
+          cp -r DemoApp.app Payload
+          zip --symlinks -r DemoApp.ipa Payload
+          rm -rf Payload; mkdir Payload
+          cp -r DemoAppUITests-Runner.app Payload/
+          zip --symlinks -r DemoAppUITests-Runner.ipa Payload
+      - name: Upload ipa files
+        uses: actions/upload-artifact@v3
+        with:
+          name: DemoApp
+          path: DemoApp/build/Build/Products/Debug-iphoneos/*.ipa
+
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Saucectl RUN Sauce Cloud
-        uses: saucelabs/saucectl-run-action@v1
+        uses: actions/checkout@v3
+      - name: Download XCUITest Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: DemoApp
+      - name: Saucectl Run
+        uses: saucelabs/saucectl-run-action@v3
         with:
           concurrency: 10
+

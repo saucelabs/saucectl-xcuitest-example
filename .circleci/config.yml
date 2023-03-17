@@ -3,15 +3,52 @@ orbs:
   saucectl: saucelabs/saucectl-run@1.0.0
 
 jobs:
+  build:
+    macos:
+      xcode: "14.2"
+    steps:
+      - checkout
+      - run:
+          command: |
+            cd DemoApp
+            xcodebuild \
+              CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
+              clean build-for-testing \
+              -project DemoApp.xcodeproj \
+              -scheme "DemoApp" \
+              -sdk iphoneos \
+              -configuration Debug \
+              -derivedDataPath build
+            cd build/Build/Products/Debug-iphoneos
+            mkdir Payload
+            cp -r DemoApp.app Payload
+            zip --symlinks -r DemoApp.ipa Payload
+            rm -rf Payload; mkdir Payload
+            cp -r DemoAppUITests-Runner.app Payload/
+            zip --symlinks -r DemoAppUITests-Runner.ipa Payload
+            mv *.ipa ../../../../../
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - DemoApp.ipa
+            - DemoAppUITests-Runner.ipa
   test-xcuitest:
     docker:
       - image: cimg/node:lts
+    environment:
+      APP: DemoApp.ipa
+      TEST_APP: DemoAppUITests-Runner.ipa
     steps:
       - checkout
+      - attach_workspace:
+          at: ./
       - saucectl/saucectl-run
 
 workflows:
   version: 2
   default_workflow:
     jobs:
-      - test-xcuitest
+      - build
+      - test-xcuitest:
+          requires:
+            - build

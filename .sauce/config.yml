@@ -11,13 +11,26 @@ sauce:
     build: Release $CI_COMMIT_SHORT_SHA
 
 xcuitest:
-  app: ./apps/SauceLabs-Demo-App.ipa
-  testApp: ./apps/SauceLabs-Demo-App-Runner.XCUITest.ipa
+  app: $APP
+  testApp: $TEST_APP
 
 suites:
   - name: "saucy xcuitest"
+    devices:
+      # If set, only device by ID will be queried.
+      #- id: <rdc_device_id>
+      - name: "iPhone.*"
+        options:
+          # If set, only devices with a SIM card will be queried.
+          carrierConnectivity: false
+          # Possible values [ANY,PHONE,TABLET]
+          deviceType: ANY
+          # If set, only private devices will be queried.
+          private: false
+  - name: "saucy xcuitest test filter by class"
     testOptions:
-      notClass: ["My_Demo_AppUITests.NavigationTest"]
+      class:
+        - DemoAppUITests.DemoAppUITestsLaunchTests
     devices:
       # If set, only device by ID will be queried.
       #- id: <rdc_device_id>
