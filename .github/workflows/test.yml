@@ -11,6 +11,7 @@ env:
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   APP: DemoApp.ipa
   TEST_APP: DemoAppUITests-Runner.ipa
+  GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
   build:
