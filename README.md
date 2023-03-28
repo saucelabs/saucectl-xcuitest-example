@@ -7,6 +7,8 @@ Example running saucectl with XCUITest.
 The steps below illustrate one of the quickest ways to get set up. If you'd like a more in-depth guide, please check out
 our [documentation](https://docs.saucelabs.com/testrunner-toolkit/installation).
 
+_If you're using VS Code, you can use [Runme](https://marketplace.visualstudio.com/items?itemName=stateful.runme) to run the following commands directly from VS Code._
+
 ### Install `saucectl`
 
 ```shell
@@ -25,11 +27,29 @@ saucectl configure
 
 Simply check out this repo, set your XCUITest test bundles and run the appropriate command below :rocket:
 
-:bulb: We also provide [DemoApp](DemoApp/) to demonstrate the test workflow. Click [here](.github/workflows/test.yml) for more details on how to build your XCUITest test bundle.
-### In Sauce Cloud
+:bulb: We also provide [DemoApp](DemoApp/) to demonstrate the test workflow. Click [here](.github/workflows/test.yml) for more details on how to build your XCUITest test pipeline.
+
+### Build `DemoApp`
 
 ```shell
-APP=<your-app-ipa-file> TEST_APP=<your-test-app-ipa-file> saucectl run
+cd DemoApp
+
+xcodebuild \
+  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
+  clean build-for-testing \
+  -project DemoApp.xcodeproj \
+  -scheme "DemoApp" \
+  -sdk iphoneos \
+  -configuration Debug \
+  -derivedDataPath build
+```
+
+### Run XCUITest on Sauce Cloud
+
+```shell
+APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
+TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
+saucectl run
 ```
 
 ![sauce cloud example](assets/sauce_cloud_example.gif)
