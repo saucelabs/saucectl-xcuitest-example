@@ -59,6 +59,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: DemoApp
+      - name: Prepare testListFile
+        working-directory: DemoApp
+        run: sh scripts/generate-tests.sh
       - name: Saucectl Run
         uses: saucelabs/saucectl-run-action@v3
         with:

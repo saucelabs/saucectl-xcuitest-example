@@ -2,7 +2,7 @@ apiVersion: v1alpha
 kind: xcuitest
 sauce:
   region: us-west-1
-  concurrency: 3
+  concurrency: 10
   metadata:
     tags:
       - e2e
@@ -44,7 +44,7 @@ suites:
           private: false
   - name: "saucy xcuitest test w/ sharding"
     shard: concurrency
-    testListFile: tests.txt
+    testListFile: DemoApp/test_classes.txt
     devices:
       # If set, only device by ID will be queried.
       #- id: <rdc_device_id>
