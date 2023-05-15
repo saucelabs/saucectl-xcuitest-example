@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF600E282A12CA790005AA19 /* DemoAppUIAnotherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF600E272A12CA790005AA19 /* DemoAppUIAnotherTests.swift */; };
 		BFDC4EE029C4CD9C00461583 /* DemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4EDF29C4CD9C00461583 /* DemoAppApp.swift */; };
 		BFDC4EE229C4CD9C00461583 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4EE129C4CD9C00461583 /* ContentView.swift */; };
 		BFDC4EE429C4CD9D00461583 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFDC4EE329C4CD9D00461583 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF600E272A12CA790005AA19 /* DemoAppUIAnotherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUIAnotherTests.swift; sourceTree = "<group>"; };
 		BFDC4EDC29C4CD9C00461583 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFDC4EDF29C4CD9C00461583 /* DemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppApp.swift; sourceTree = "<group>"; };
 		BFDC4EE129C4CD9C00461583 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		BFDC4EFA29C4CD9D00461583 /* DemoAppUITests */ = {
 			isa = PBXGroup;
 			children = (
+				BF600E272A12CA790005AA19 /* DemoAppUIAnotherTests.swift */,
 				BFDC4EFB29C4CD9D00461583 /* DemoAppUITests.swift */,
 				BFDC4EFD29C4CD9D00461583 /* DemoAppUITestsLaunchTests.swift */,
 			);
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFDC4EFC29C4CD9D00461583 /* DemoAppUITests.swift in Sources */,
+				BF600E282A12CA790005AA19 /* DemoAppUIAnotherTests.swift in Sources */,
 				BFDC4EFE29C4CD9D00461583 /* DemoAppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,4 @@
+DemoAppUITests
+DemoAppUIAnotherTests
+DemoAppUITestsLaunchTests
+
