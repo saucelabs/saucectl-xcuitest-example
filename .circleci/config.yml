@@ -19,8 +19,7 @@ jobs:
               -sdk iphoneos \
               -configuration Debug \
               -derivedDataPath build
-            pushd .
-            cd build/Build/Products/Debug-iphoneos
+            pushd build/Build/Products/Debug-iphoneos
             mkdir Payload
             cp -r DemoApp.app Payload
             zip --symlinks -r DemoApp.ipa Payload
