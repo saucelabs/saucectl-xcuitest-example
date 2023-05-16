@@ -27,17 +27,20 @@ jobs:
             cp -r DemoAppUITests-Runner.app Payload/
             zip --symlinks -r DemoAppUITests-Runner.ipa Payload
             mv *.ipa ../../../../../
+            mv test_classes.txt ../../../../../
       - persist_to_workspace:
           root: ./
           paths:
             - DemoApp.ipa
             - DemoAppUITests-Runner.ipa
+            - test_classes.txt
   test-xcuitest:
     docker:
       - image: cimg/node:lts
     environment:
       APP: DemoApp.ipa
       TEST_APP: DemoAppUITests-Runner.ipa
+      TEST_LIST_FILE: test_classes.txt
     steps:
       - checkout
       - attach_workspace:
