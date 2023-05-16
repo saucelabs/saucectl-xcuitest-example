@@ -55,9 +55,9 @@ saucectl run
 
 ### Run XCUITest in Parallel
 
-`saucectl` supports running tests in parallel. It requires `shard` and `testListFile` settings. Click [here](.sauce/sharding-config.yml) to check the details.
+`saucectl` supports running tests in parallel by setting `shard` and `testListFile` in sauce config. Click [here](.sauce/sharding-config.yml) to check the details.
 
-There is a script to extract test classes in `DemoApp`. So when you're building `DemoApp` in this example repo, it also generates a `DemoApp/test_classes.txt`. This file can be used for sharding XCUITest by concurrency. You can also set `testListFile` on demand.
+There is a script to extract test classes in `DemoApp` project build phase. So when you're building `DemoApp` in this example repo, it also generates a `DemoApp/test_classes.txt`. This file can be used for sharding XCUITest by concurrency. You can also create your own `testListFile` on demand.
 
 ```
 APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
@@ -70,5 +70,6 @@ saucectl run
 ## The Config
 
 [Follow me](.sauce/config.yml) if you'd like to see how saucectl is configured for this repository.
+[Sharding Config](.sauce/sharding-config.yml) if you'd like to see how saucectl is configured to run XCUITest in parallel.
 
 Our IDE Integrations (e.g. [Visual Studio Code](https://docs.saucelabs.com/dev/cli/saucectl/usage/ide/vscode/)) can help you out by validating the YAML files and provide handy suggestions, so make sure to check them out!
