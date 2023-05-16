@@ -59,7 +59,7 @@ jobs:
       - attach_workspace:
           at: ./
       - saucectl/saucectl-run:
-          config-file: ./sauce
+          config-file: .sauce/sharding-config.yml
 
 workflows:
   version: 2
