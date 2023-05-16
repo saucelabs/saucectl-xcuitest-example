@@ -12,6 +12,7 @@ env:
   APP: DemoApp.ipa
   TEST_APP: DemoAppUITests-Runner.ipa
   GITHUB_TOKEN: ${{ github.token }}
+  TEST_LIST_FILE: test_classes.txt
 
 jobs:
   build:
@@ -48,6 +49,11 @@ jobs:
         with:
           name: DemoApp
           path: DemoApp/build/Build/Products/Debug-iphoneos/*.ipa
+      - name: Upload testListFile
+        uses: actions/upload-artifact@v3
+        with:
+          name: test_classes.txt
+          path: DemoApp/test_classes.txt
 
   test:
     needs: build
@@ -59,9 +65,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: DemoApp
-      - name: Prepare testListFile
-        working-directory: DemoApp
-        run: sh scripts/generate-tests.sh
+      - name: Download testListFile Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: test_classes.txt
       - name: Saucectl Run
         uses: saucelabs/saucectl-run-action@v3
         with:

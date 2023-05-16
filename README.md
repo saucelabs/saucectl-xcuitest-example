@@ -49,6 +49,7 @@ xcodebuild \
 ```shell
 APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
 TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
+TEST_LIST_FILE=DemoApp/test_classes.txt \
 saucectl run
 ```
 
