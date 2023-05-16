@@ -15,22 +15,9 @@ xcuitest:
   testApp: $TEST_APP
 
 suites:
-  - name: "saucy xcuitest"
-    devices:
-      # If set, only device by ID will be queried.
-      #- id: <rdc_device_id>
-      - name: "iPhone.*"
-        options:
-          # If set, only devices with a SIM card will be queried.
-          carrierConnectivity: false
-          # Possible values [ANY,PHONE,TABLET]
-          deviceType: ANY
-          # If set, only private devices will be queried.
-          private: false
-  - name: "saucy xcuitest test filter by class"
-    testOptions:
-      class:
-        - DemoAppUITests.DemoAppUITestsLaunchTests
+  - name: "saucy xcuitest test w/ sharding"
+    shard: concurrency
+    testListFile: $TEST_LIST_FILE
     devices:
       # If set, only device by ID will be queried.
       #- id: <rdc_device_id>

@@ -41,12 +41,25 @@ jobs:
     environment:
       APP: DemoApp.ipa
       TEST_APP: DemoAppUITests-Runner.ipa
-      TEST_LIST_FILE: test_classes.txt
     steps:
       - checkout
       - attach_workspace:
           at: ./
       - saucectl/saucectl-run
+
+  test-xcuitest-in-parallel:
+    docker:
+      - image: cimg/node:lts
+    environment:
+      APP: DemoApp.ipa
+      TEST_APP: DemoAppUITests-Runner.ipa
+      TEST_LIST_FILE: test_classes.txt
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - saucectl/saucectl-run:
+          config-file: ./sauce
 
 workflows:
   version: 2
@@ -54,5 +67,8 @@ workflows:
     jobs:
       - build
       - test-xcuitest:
+          requires:
+            - build
+      - test-xcuitest-in-parallel:
           requires:
             - build

@@ -65,6 +65,21 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: DemoApp
+      - name: Saucectl Run
+        uses: saucelabs/saucectl-run-action@v3
+        with:
+          concurrency: 10
+
+  test-in-parallel:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Download XCUITest Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: DemoApp
       - name: Download testListFile Artifacts
         uses: actions/download-artifact@v3
         with:
@@ -73,4 +88,4 @@ jobs:
         uses: saucelabs/saucectl-run-action@v3
         with:
           concurrency: 10
-
+          config-file: .sauce/sharding-config.yml

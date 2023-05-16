@@ -49,11 +49,23 @@ xcodebuild \
 ```shell
 APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
 TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
+saucectl run
+```
+![sauce cloud example](assets/xcuitest.gif)
+
+### Run XCUITest in Parallel
+
+`saucectl` supports running tests in parallel. It requires `shard` and `testListFile` settings. Click [here](.sauce/sharding-config.yml) to check the details.
+
+There is a script to extract test classes in `DemoApp`. So when you're building `DemoApp` in this example repo, it also generates a `DemoApp/test_classes.txt`. This file can be used for sharding XCUITest by concurrency. You can also set `testListFile` on demand.
+
+```
+APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
+TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
 TEST_LIST_FILE=DemoApp/test_classes.txt \
 saucectl run
 ```
 
-![sauce cloud example](assets/xcuitest.gif)
 
 ## The Config
 
