@@ -19,6 +19,7 @@ jobs:
               -sdk iphoneos \
               -configuration Debug \
               -derivedDataPath build
+            pushd .
             cd build/Build/Products/Debug-iphoneos
             mkdir Payload
             cp -r DemoApp.app Payload
@@ -27,7 +28,8 @@ jobs:
             cp -r DemoAppUITests-Runner.app Payload/
             zip --symlinks -r DemoAppUITests-Runner.ipa Payload
             mv *.ipa ../../../../../
-            mv test_classes.txt ../../../../../
+            popd
+            mv test_classes.txt ../
       - persist_to_workspace:
           root: ./
           paths:
