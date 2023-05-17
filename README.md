@@ -57,7 +57,7 @@ saucectl run
 
 `saucectl` supports running tests in parallel by setting `shard` and `testListFile` in sauce config. Click [here](.sauce/sharding-config.yml) to check the details.
 
-There is a script to extract test classes in `DemoApp` project build phase. So when you're building `DemoApp` in this example repo, it also generates a `DemoApp/test_classes.txt`. This file can be used for sharding XCUITest by concurrency. You can also create your own `testListFile` on demand.
+There is a script available to extract test classes during the build phase of the DemoApp project. Consequently, when you build DemoApp using the provided repository as an example, it generates a `DemoApp/test_classes.txt` file. This file can be utilized for sharding XCUITest by concurrency. Additionally, you have the flexibility to create your own `testListFile` as needed.
 
 ```
 APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
