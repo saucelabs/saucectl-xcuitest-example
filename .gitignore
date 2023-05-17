@@ -15,4 +15,5 @@ Payload/
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
+*/test_classes.txt
 

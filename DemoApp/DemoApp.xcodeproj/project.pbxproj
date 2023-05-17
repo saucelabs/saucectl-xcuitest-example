@@ -7,23 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF600E282A12CA790005AA19 /* DemoAppUIAnotherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF600E272A12CA790005AA19 /* DemoAppUIAnotherTests.swift */; };
 		BFDC4EE029C4CD9C00461583 /* DemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4EDF29C4CD9C00461583 /* DemoAppApp.swift */; };
 		BFDC4EE229C4CD9C00461583 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4EE129C4CD9C00461583 /* ContentView.swift */; };
 		BFDC4EE429C4CD9D00461583 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFDC4EE329C4CD9D00461583 /* Assets.xcassets */; };
 		BFDC4EE829C4CD9D00461583 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFDC4EE729C4CD9D00461583 /* Preview Assets.xcassets */; };
-		BFDC4EF229C4CD9D00461583 /* DemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4EF129C4CD9D00461583 /* DemoAppTests.swift */; };
 		BFDC4EFC29C4CD9D00461583 /* DemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4EFB29C4CD9D00461583 /* DemoAppUITests.swift */; };
 		BFDC4EFE29C4CD9D00461583 /* DemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDC4EFD29C4CD9D00461583 /* DemoAppUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BFDC4EEE29C4CD9D00461583 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDC4ED429C4CD9C00461583 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BFDC4EDB29C4CD9C00461583;
-			remoteInfo = DemoApp;
-		};
 		BFDC4EF829C4CD9D00461583 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDC4ED429C4CD9C00461583 /* Project object */;
@@ -34,14 +27,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF600E272A12CA790005AA19 /* DemoAppUIAnotherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUIAnotherTests.swift; sourceTree = "<group>"; };
 		BFDC4EDC29C4CD9C00461583 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFDC4EDF29C4CD9C00461583 /* DemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppApp.swift; sourceTree = "<group>"; };
 		BFDC4EE129C4CD9C00461583 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFDC4EE329C4CD9D00461583 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFDC4EE529C4CD9D00461583 /* DemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemoApp.entitlements; sourceTree = "<group>"; };
 		BFDC4EE729C4CD9D00461583 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BFDC4EED29C4CD9D00461583 /* DemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFDC4EF129C4CD9D00461583 /* DemoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppTests.swift; sourceTree = "<group>"; };
 		BFDC4EF729C4CD9D00461583 /* DemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFDC4EFB29C4CD9D00461583 /* DemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITests.swift; sourceTree = "<group>"; };
 		BFDC4EFD29C4CD9D00461583 /* DemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -49,13 +41,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		BFDC4ED929C4CD9C00461583 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BFDC4EEA29C4CD9D00461583 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				BFDC4EDE29C4CD9C00461583 /* DemoApp */,
-				BFDC4EF029C4CD9D00461583 /* DemoAppTests */,
 				BFDC4EFA29C4CD9D00461583 /* DemoAppUITests */,
 				BFDC4EDD29C4CD9C00461583 /* Products */,
 			);
@@ -86,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				BFDC4EDC29C4CD9C00461583 /* DemoApp.app */,
-				BFDC4EED29C4CD9D00461583 /* DemoAppTests.xctest */,
 				BFDC4EF729C4CD9D00461583 /* DemoAppUITests.xctest */,
 			);
 			name = Products;
@@ -112,17 +95,10 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		BFDC4EF029C4CD9D00461583 /* DemoAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				BFDC4EF129C4CD9D00461583 /* DemoAppTests.swift */,
-			);
-			path = DemoAppTests;
-			sourceTree = "<group>";
-		};
 		BFDC4EFA29C4CD9D00461583 /* DemoAppUITests */ = {
 			isa = PBXGroup;
 			children = (
+				BF600E272A12CA790005AA19 /* DemoAppUIAnotherTests.swift */,
 				BFDC4EFB29C4CD9D00461583 /* DemoAppUITests.swift */,
 				BFDC4EFD29C4CD9D00461583 /* DemoAppUITestsLaunchTests.swift */,
 			);
@@ -149,24 +125,6 @@
 			productReference = BFDC4EDC29C4CD9C00461583 /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BFDC4EEC29C4CD9D00461583 /* DemoAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BFDC4F0429C4CD9D00461583 /* Build configuration list for PBXNativeTarget "DemoAppTests" */;
-			buildPhases = (
-				BFDC4EE929C4CD9D00461583 /* Sources */,
-				BFDC4EEA29C4CD9D00461583 /* Frameworks */,
-				BFDC4EEB29C4CD9D00461583 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BFDC4EEF29C4CD9D00461583 /* PBXTargetDependency */,
-			);
-			name = DemoAppTests;
-			productName = DemoAppTests;
-			productReference = BFDC4EED29C4CD9D00461583 /* DemoAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		BFDC4EF629C4CD9D00461583 /* DemoAppUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFDC4F0729C4CD9D00461583 /* Build configuration list for PBXNativeTarget "DemoAppUITests" */;
@@ -174,6 +132,7 @@
 				BFDC4EF329C4CD9D00461583 /* Sources */,
 				BFDC4EF429C4CD9D00461583 /* Frameworks */,
 				BFDC4EF529C4CD9D00461583 /* Resources */,
+				BFB1BD402A12FD7700A73140 /* Generate testListFile */,
 			);
 			buildRules = (
 			);
@@ -198,10 +157,6 @@
 					BFDC4EDB29C4CD9C00461583 = {
 						CreatedOnToolsVersion = 14.2;
 					};
-					BFDC4EEC29C4CD9D00461583 = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = BFDC4EDB29C4CD9C00461583;
-					};
 					BFDC4EF629C4CD9D00461583 = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = BFDC4EDB29C4CD9C00461583;
@@ -222,7 +177,6 @@
 			projectRoot = "";
 			targets = (
 				BFDC4EDB29C4CD9C00461583 /* DemoApp */,
-				BFDC4EEC29C4CD9D00461583 /* DemoAppTests */,
 				BFDC4EF629C4CD9D00461583 /* DemoAppUITests */,
 			);
 		};
@@ -238,13 +192,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFDC4EEB29C4CD9D00461583 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFDC4EF529C4CD9D00461583 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,6 +200,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BFB1BD402A12FD7700A73140 /* Generate testListFile */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate testListFile";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Set the path to the output file\nOUTPUT_FILE=\"${SRCROOT}/test_classes.txt\"\n# Find all Swift files in the test target and exclude the ones you don't want\nTEST_FILES=$(find \"${SRCROOT}/${TARGET_NAME}\" -name \"*.swift\" -not -name \"Info.plist\")\n# Print the found test files\necho \"Found test files:\"\necho \"$TEST_FILES\"\necho \"\"\n# Initialize an empty string to store class names\nCLASS_NAMES=\"\"\n# Get the class names from the Swift files that contain test methods\nwhile IFS= read -r file; do\n    # Check if the file contains a test method\n    if grep -q \"func test[A-Za-z0-9_]*()\" \"$file\"; then\n        # Extract the class name and append it to the list\n        CLASS_NAME=$(grep -Eo \"class [a-zA-Z_][a-zA-Z0-9_]*:*\" \"$file\" | awk '{gsub(\":\", \"\", $2); print $2}')\n        CLASS_NAMES+=\"$CLASS_NAME\"$'\\n'\n    fi\ndone <<< \"$TEST_FILES\"\n# Remove duplicate class names\nUNIQUE_CLASS_NAMES=$(echo \"$CLASS_NAMES\" | sort | uniq | grep -v '^$')\n# Write the unique class names to the output file\necho \"$UNIQUE_CLASS_NAMES\" > \"$OUTPUT_FILE\"\n# Print the class names and the path to the output file\necho \"Test class names:\"\necho \"$UNIQUE_CLASS_NAMES\"\necho \"\"\necho \"Test class list has been created at: ${OUTPUT_FILE}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BFDC4ED829C4CD9C00461583 /* Sources */ = {
@@ -264,19 +232,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BFDC4EE929C4CD9D00461583 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BFDC4EF229C4CD9D00461583 /* DemoAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFDC4EF329C4CD9D00461583 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BFDC4EFC29C4CD9D00461583 /* DemoAppUITests.swift in Sources */,
+				BF600E282A12CA790005AA19 /* DemoAppUIAnotherTests.swift in Sources */,
 				BFDC4EFE29C4CD9D00461583 /* DemoAppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,11 +245,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BFDC4EEF29C4CD9D00461583 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BFDC4EDB29C4CD9C00461583 /* DemoApp */;
-			targetProxy = BFDC4EEE29C4CD9D00461583 /* PBXContainerItemProxy */;
-		};
 		BFDC4EF929C4CD9D00461583 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BFDC4EDB29C4CD9C00461583 /* DemoApp */;
@@ -478,50 +434,6 @@
 			};
 			name = Release;
 		};
-		BFDC4F0529C4CD9D00461583 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.saucelabs.DemoAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DemoApp";
-			};
-			name = Debug;
-		};
-		BFDC4F0629C4CD9D00461583 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.saucelabs.DemoAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DemoApp";
-			};
-			name = Release;
-		};
 		BFDC4F0829C4CD9D00461583 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -581,15 +493,6 @@
 			buildConfigurations = (
 				BFDC4F0229C4CD9D00461583 /* Debug */,
 				BFDC4F0329C4CD9D00461583 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BFDC4F0429C4CD9D00461583 /* Build configuration list for PBXNativeTarget "DemoAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BFDC4F0529C4CD9D00461583 /* Debug */,
-				BFDC4F0629C4CD9D00461583 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

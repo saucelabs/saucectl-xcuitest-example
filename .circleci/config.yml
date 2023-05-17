@@ -19,7 +19,7 @@ jobs:
               -sdk iphoneos \
               -configuration Debug \
               -derivedDataPath build
-            cd build/Build/Products/Debug-iphoneos
+            pushd build/Build/Products/Debug-iphoneos
             mkdir Payload
             cp -r DemoApp.app Payload
             zip --symlinks -r DemoApp.ipa Payload
@@ -27,11 +27,14 @@ jobs:
             cp -r DemoAppUITests-Runner.app Payload/
             zip --symlinks -r DemoAppUITests-Runner.ipa Payload
             mv *.ipa ../../../../../
+            popd
+            mv test_classes.txt ../
       - persist_to_workspace:
           root: ./
           paths:
             - DemoApp.ipa
             - DemoAppUITests-Runner.ipa
+            - test_classes.txt
   test-xcuitest:
     docker:
       - image: cimg/node:lts
@@ -44,11 +47,28 @@ jobs:
           at: ./
       - saucectl/saucectl-run
 
+  test-xcuitest-in-parallel:
+    docker:
+      - image: cimg/node:lts
+    environment:
+      APP: DemoApp.ipa
+      TEST_APP: DemoAppUITests-Runner.ipa
+      TEST_LIST_FILE: test_classes.txt
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - saucectl/saucectl-run:
+          config-file: .sauce/sharding-config.yml
+
 workflows:
   version: 2
   default_workflow:
     jobs:
       - build
       - test-xcuitest:
+          requires:
+            - build
+      - test-xcuitest-in-parallel:
           requires:
             - build
