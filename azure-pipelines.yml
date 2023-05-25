@@ -1,0 +1,66 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: macOS-latest
+
+steps:
+- task: CmdLine@2
+  displayName: Build XCUITest Artifacts
+  inputs:
+    workingDirectory: DemoApp/
+    script: |
+      xcodebuild \
+        CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
+        clean build-for-testing \
+        -project DemoApp.xcodeproj \
+        -scheme "DemoApp" \
+        -sdk iphoneos \
+        -configuration Debug \
+        -derivedDataPath build
+      cd build/Build/Products/Debug-iphoneos
+      mkdir Payload
+      cp -r DemoApp.app Payload
+      zip --symlinks -r DemoApp.ipa Payload
+      rm -rf Payload; mkdir Payload
+      cp -r DemoAppUITests-Runner.app Payload/
+      zip --symlinks -r DemoAppUITests-Runner.ipa Payload
+
+- task: CmdLine@2
+  displayName: 'Install sauceCtl'
+  inputs:
+    script: |
+      sudo sh -c 'curl -L https://saucelabs.github.io/saucectl/install | bash -s -- -b /usr/local/bin'
+      saucectl --version
+
+- task: CmdLine@2
+  displayName: 'Saucectl RUN'
+  inputs:
+    script: |
+      saucectl run --ccy 10
+  env:
+    # Don't forget to define those secret variables into the pipeline configuration.
+    # https://learn.microsoft.com/en-us/azure/devops/pipelines/process/set-secret-variables?view=azure-devops&tabs=yaml%2Cbash#secret-variable-in-the-ui
+    SAUCE_USERNAME: $(sauceUsername)
+    SAUCE_ACCESS_KEY: $(sauceAccessKey)
+    APP: DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app
+    TEST_APP: DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app
+
+- task: CmdLine@2
+  displayName: 'Saucectl RUN - Sharded'
+  inputs:
+    script: |
+      saucectl run --ccy 10 --config ./.sauce/sharding-config.yml
+  env:
+    # Don't forget to define those secret variables into the pipeline configuration.
+    # https://learn.microsoft.com/en-us/azure/devops/pipelines/process/set-secret-variables?view=azure-devops&tabs=yaml%2Cbash#secret-variable-in-the-ui
+    SAUCE_USERNAME: $(sauceUsername)
+    SAUCE_ACCESS_KEY: $(sauceAccessKey)
+    APP: DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app
+    TEST_APP: DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app
+    TEST_LIST_FILE: DemoApp/test_classes.txt
