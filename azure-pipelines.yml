@@ -48,3 +48,6 @@ steps:
     # https://learn.microsoft.com/en-us/azure/devops/pipelines/process/set-secret-variables?view=azure-devops&tabs=yaml%2Cbash#secret-variable-in-the-ui
     SAUCE_USERNAME: $(sauceUsername)
     SAUCE_ACCESS_KEY: $(sauceAccessKey)
+    APP: DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app
+    TEST_APP: DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app
+    TEST_LIST_FILE=DemoApp/test_classes.txt: DemoApp/test_classes.txt
