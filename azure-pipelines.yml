@@ -50,10 +50,9 @@ steps:
     SAUCE_ACCESS_KEY: $(sauceAccessKey)
     APP: DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app
     TEST_APP: DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app
-    TEST_LIST_FILE: DemoApp/test_classes.txt
 
 - task: CmdLine@2
-  displayName: 'Saucectl RUN - Shared'
+  displayName: 'Saucectl RUN - Sharded'
   inputs:
     script: |
       saucectl run --ccy 10 --config ./.sauce/sharding-config.yml
