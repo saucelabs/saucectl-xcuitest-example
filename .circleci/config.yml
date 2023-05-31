@@ -28,13 +28,13 @@ jobs:
             zip --symlinks -r DemoAppUITests-Runner.ipa Payload
             mv *.ipa ../../../../../
             popd
-            mv test_classes.txt ../
+            mv test_classes_and_tests.txt ../
       - persist_to_workspace:
           root: ./
           paths:
             - DemoApp.ipa
             - DemoAppUITests-Runner.ipa
-            - test_classes.txt
+            - test_classes_and_tests.txt
   test-xcuitest:
     docker:
       - image: cimg/node:lts
@@ -53,7 +53,7 @@ jobs:
     environment:
       APP: DemoApp.ipa
       TEST_APP: DemoAppUITests-Runner.ipa
-      TEST_LIST_FILE: test_classes.txt
+      TEST_LIST_FILE: test_classes_and_tests.txt
     steps:
       - checkout
       - attach_workspace:
