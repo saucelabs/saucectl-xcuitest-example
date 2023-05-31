@@ -63,7 +63,7 @@ During the build phase of the DemoApp project, a script is available to extract 
 APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
 TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
 TEST_LIST_FILE=DemoApp/test_classes_and_tests.txt \
-saucectl run
+saucectl run -c .sauce/sharding-config.yml
 ```
 
 
