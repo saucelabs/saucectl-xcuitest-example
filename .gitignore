@@ -17,3 +17,4 @@ project.xcworkspace/
 xcuserdata/
 */test_classes.txt
 */test_classes_and_tests.txt
+gitpod/bin/saucectl

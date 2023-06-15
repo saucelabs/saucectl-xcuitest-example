@@ -1,0 +1,36 @@
+apiVersion: v1alpha
+kind: xcuitest
+sauce:
+  region: us-west-1
+  concurrency: 3
+  metadata:
+    tags:
+      - gitpod
+      - e2e
+      - release team
+      - other tag
+    build: $BUILD 
+
+xcuitest:
+  app: $APP
+  testApp: $TEST_APP
+
+suites:
+  - name: "saucy xcuitest"
+    devices:
+      # If set, only device by ID will be queried.
+      #- id: <rdc_device_id>
+      - name: "iPhone.*"
+        options:
+          # If set, only devices with a SIM card will be queried.
+          carrierConnectivity: false
+          # Possible values [ANY,PHONE,TABLET]
+          deviceType: ANY
+          # If set, only private devices will be queried.
+          private: false
+artifacts:
+  download:
+    when: always
+    match:
+      - "junit.xml"
+    directory: ./artifacts/
