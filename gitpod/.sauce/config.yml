@@ -9,7 +9,7 @@ sauce:
       - e2e
       - release team
       - other tag
-    build: Gitpod Build $DATE_TIME 
+    build: $BUILD 
 
 xcuitest:
   app: $APP
