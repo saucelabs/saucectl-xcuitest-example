@@ -15,9 +15,9 @@ echo ""
 echo "======================================================"
 echo "Running Apple XCUITest tests on APP=$APP and TEST_APP=$TEST_APP in Sauce Labs cloud!"
 echo ""
-echo "To vew your test results in real time visit app.saucelabs.com/dashboard/builds/rdc and open the build with name 'Gitpod Build $DATE_TIME'"
+echo "To vew your test results in real time visit https://app.saucelabs.com/dashboard/builds/rdc and open the build with name 'Gitpod Build $DATE_TIME'"
 echo "======================================================"
 echo ""
 sleep 8
 
-saucectl run
+./bin/saucectl run
