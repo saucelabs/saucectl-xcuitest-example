@@ -82,8 +82,8 @@ xcodebuild \
 ### Run XCUITest Simulator Test on Sauce Cloud
 
 ```shell
-APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
-TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
+APP=DemoApp/build/Build/Products/Debug-iphonesimulator/DemoApp.app \
+TEST_APP=DemoApp/build/Build/Products/Debug-iphonesimulator/DemoAppUITests-Runner.app \
 saucectl run -c .sauce/simulator-config.yml
 ```
 
