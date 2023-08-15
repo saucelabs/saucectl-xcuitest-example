@@ -44,7 +44,7 @@ xcodebuild \
   -derivedDataPath build
 ```
 
-### Run XCUITest on Sauce Cloud
+### Run XCUITest on Sauce Cloud Real Device
 
 ```shell
 APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
@@ -53,19 +53,7 @@ saucectl run
 ```
 ![sauce cloud example](assets/xcuitest.gif)
 
-### Run XCUITest in Parallel
-
-`saucectl` supports running tests in parallel by setting `shard` and `testListFile` in sauce config. Click [here](.sauce/sharding-config.yml) to check the details.
-
-During the build phase of the DemoApp project, a script is available to extract test classes. As a result, when you build DemoApp using the provided repository, it generates a `DemoApp/test_classes_and_tests.txt` file. This file can be used for sharding XCUITest based on concurrency. Furthermore, you have the flexibility to create your own `testListFile` as required.
-
-```
-APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
-TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
-TEST_LIST_FILE=DemoApp/test_classes_and_tests.txt \
-saucectl run -c .sauce/sharding-config.yml
-```
-### Build `DemoApp` for Simulator Test
+### Build `DemoApp` for Simulator
 
 ```shell
 cd DemoApp
@@ -79,13 +67,27 @@ xcodebuild \
   -configuration Debug \
   -derivedDataPath build
 ```
-### Run XCUITest Simulator Test on Sauce Cloud
+### Run XCUITest on Sauce Cloud Simulator
 
 ```shell
 APP=DemoApp/build/Build/Products/Debug-iphonesimulator/DemoApp.app \
 TEST_APP=DemoApp/build/Build/Products/Debug-iphonesimulator/DemoAppUITests-Runner.app \
 saucectl run -c .sauce/simulator-config.yml
 ```
+
+### Run XCUITest in Parallel
+
+`saucectl` supports running tests in parallel by setting `shard` and `testListFile` in sauce config. Click [here](.sauce/sharding-config.yml) to check the details.
+
+During the build phase of the DemoApp project, a script is available to extract test classes. As a result, when you build DemoApp using the provided repository, it generates a `DemoApp/test_classes_and_tests.txt` file. This file can be used for sharding XCUITest based on concurrency. Furthermore, you have the flexibility to create your own `testListFile` as required.
+
+```
+APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
+TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
+TEST_LIST_FILE=DemoApp/test_classes_and_tests.txt \
+saucectl run -c .sauce/sharding-config.yml
+```
+
 
 ## The Config
 
