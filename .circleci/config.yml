@@ -108,7 +108,7 @@ workflows:
     jobs:
       - build-for-rdc
       - build-for-simulator
-      - test-xcuitest:
+      - test-xcuitest-on-rdc:
           requires:
             - build-for-rdc
       - test-xcuitest-in-parallel:
