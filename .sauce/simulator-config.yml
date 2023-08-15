@@ -28,7 +28,7 @@ suites:
     timeout: 10m
     testOptions:
       class:
-        - DemoAppUITests.DemoAppUITestsLaunchTests
+        - DemoAppUITests/DemoAppUITestsLaunchTests
     simulators:
       # To ensure name accuracy, check the list of supported virtual devices:
       # https://app.saucelabs.com/live/web-testing/virtual
