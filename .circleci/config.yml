@@ -53,12 +53,8 @@ jobs:
               -configuration Debug \
               -derivedDataPath build
             pushd build/Build/Products/Debug-iphonesimulator
-            mkdir Payload
-            cp -r DemoApp.app Payload
-            zip --symlinks -r DemoApp-Simulator.zip Payload
-            rm -rf Payload; mkdir Payload
-            cp -r DemoAppUITests-Runner.app Payload/
-            zip --symlinks -r DemoAppUITests-Runner-Simulator.zip Payload
+            zip --symlinks -r DemoApp-Simulator.zip DemoApp.app
+            zip --symlinks -r DemoAppUITests-Runner-Simulator.zip DemoAppUITests-Runner.app
             mv *.zip ../../../../../
             popd
       - persist_to_workspace:

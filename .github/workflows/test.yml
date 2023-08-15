@@ -78,12 +78,8 @@ jobs:
             -configuration Debug \
             -derivedDataPath build
           cd build/Build/Products/Debug-iphonesimulator
-          mkdir Payload
-          cp -r DemoApp.app Payload
-          zip --symlinks -r DemoApp.zip Payload
-          rm -rf Payload; mkdir Payload
-          cp -r DemoAppUITests-Runner.app Payload/
-          zip --symlinks -r DemoAppUITests-Runner.zip Payload
+          zip --symlinks -r DemoApp-Simulator.zip DemoApp.app
+          zip --symlinks -r DemoAppUITests-Runner-Simulator.zip DemoAppUITests-Runner.app
       - name: Upload ipa files
         uses: actions/upload-artifact@v3
         with:
@@ -141,5 +137,5 @@ jobs:
           concurrency: 10
           config-file: .sauce/simulator-config.yml
           env:
-            APP: DemoApp.zip
-            TEST_APP: DemoAppUITests-Runner.zip
+            APP: DemoApp-Simulator.zip
+            TEST_APP: DemoAppUITests-Runner-Simulator.zip
