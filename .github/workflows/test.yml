@@ -80,15 +80,15 @@ jobs:
           cd build/Build/Products/Debug-iphonesimulator
           mkdir Payload
           cp -r DemoApp.app Payload
-          zip --symlinks -r DemoApp.ipa Payload
+          zip --symlinks -r DemoApp.zip Payload
           rm -rf Payload; mkdir Payload
           cp -r DemoAppUITests-Runner.app Payload/
-          zip --symlinks -r DemoAppUITests-Runner.ipa Payload
+          zip --symlinks -r DemoAppUITests-Runner.zip Payload
       - name: Upload ipa files
         uses: actions/upload-artifact@v3
         with:
           name: DemoApp
-          path: DemoApp/build/Build/Products/Debug-iphonesimulator/*.ipa
+          path: DemoApp/build/Build/Products/Debug-iphonesimulator/*.zip
 
   test:
     needs: build-for-rdc
@@ -140,3 +140,6 @@ jobs:
         with:
           concurrency: 10
           config-file: .sauce/simulator-config.yml
+          env:
+            APP: DemoApp.zip
+            TEST_APP: DemoAppUITests-Runner.zip
