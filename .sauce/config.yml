@@ -23,7 +23,7 @@ suites:
         options:
           # If set, only devices with a SIM card will be queried.
           carrierConnectivity: false
-          # Possible values [ANY,PHONE,TABLET]
+          # Possible values [ANY, PHONE, TABLET]
           deviceType: ANY
           # If set, only private devices will be queried.
           private: false
@@ -38,7 +38,7 @@ suites:
         options:
           # If set, only devices with a SIM card will be queried.
           carrierConnectivity: false
-          # Possible values [ANY,PHONE,TABLET]
+          # Possible values [ANY, PHONE, TABLET]
           deviceType: ANY
           # If set, only private devices will be queried.
           private: false

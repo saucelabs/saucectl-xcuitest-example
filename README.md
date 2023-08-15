@@ -29,7 +29,7 @@ Simply check out this repo, set your XCUITest test bundles and run the appropria
 
 :bulb: We also provide [DemoApp](DemoApp/) to demonstrate the test workflow. Click [here](.github/workflows/test.yml) for more details on how to build your XCUITest test pipeline.
 
-### Build `DemoApp`
+### Build `DemoApp` for Real Device
 
 ```shell
 cd DemoApp
@@ -65,11 +65,32 @@ TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
 TEST_LIST_FILE=DemoApp/test_classes_and_tests.txt \
 saucectl run -c .sauce/sharding-config.yml
 ```
+### Build `DemoApp` for Simulator Test
 
+```shell
+cd DemoApp
+
+xcodebuild \
+  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
+  clean build-for-testing \
+  -project DemoApp.xcodeproj \
+  -scheme "DemoApp" \
+  -sdk iphonesimulator \
+  -configuration Debug \
+  -derivedDataPath build
+```
+### Run XCUITest Simulator Test on Sauce Cloud
+
+```shell
+APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoApp.app \
+TEST_APP=DemoApp/build/Build/Products/Debug-iphoneos/DemoAppUITests-Runner.app \
+saucectl run -c .sauce/simulator-config.yml
+```
 
 ## The Config
 
 [Follow me](.sauce/config.yml) if you'd like to see how saucectl is configured for this repository.
 [Sharding Config](.sauce/sharding-config.yml) if you'd like to see how saucectl is configured to run XCUITest in parallel.
+[Simulator Config](.sauce/simulator-config.yml) if you'd like to see how saucectl is configured to run XCUITest with a simulator.
 
 Our IDE Integrations (e.g. [Visual Studio Code](https://docs.saucelabs.com/dev/cli/saucectl/usage/ide/vscode/)) can help you out by validating the YAML files and provide handy suggestions, so make sure to check them out!
