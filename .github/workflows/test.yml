@@ -133,9 +133,9 @@ jobs:
           name: DemoApp
       - name: Saucectl Run
         uses: saucelabs/saucectl-run-action@v3
+        env:
+          APP: DemoApp-Simulator.zip
+          TEST_APP: DemoAppUITests-Runner-Simulator.zip
         with:
           concurrency: 10
           config-file: .sauce/simulator-config.yml
-          env:
-            APP: DemoApp-Simulator.zip
-            TEST_APP: DemoAppUITests-Runner-Simulator.zip
