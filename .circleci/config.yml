@@ -48,23 +48,23 @@ jobs:
               clean build-for-testing \
               -project DemoApp.xcodeproj \
               -scheme "DemoApp" \
-              -sdk iphoneos \
+              -sdk iphonesimulator \
               -configuration Debug \
               -derivedDataPath build
             pushd build/Build/Products/Debug-iphonesimulator
             mkdir Payload
             cp -r DemoApp.app Payload
-            zip --symlinks -r DemoApp.ipa Payload
+            zip --symlinks -r DemoApp.zip Payload
             rm -rf Payload; mkdir Payload
             cp -r DemoAppUITests-Runner.app Payload/
-            zip --symlinks -r DemoAppUITests-Runner.ipa Payload
-            mv *.ipa ../../../../../
+            zip --symlinks -r DemoAppUITests-Runner.zip Payload
+            mv *.zip ../../../../../
             popd
       - persist_to_workspace:
           root: ./
           paths:
-            - DemoApp.ipa
-            - DemoAppUITests-Runner.ipa
+            - DemoApp.zip
+            - DemoAppUITests-Runner.zip
   test-xcuitest-on-rdc:
     docker:
       - image: cimg/node:lts
@@ -90,12 +90,13 @@ jobs:
           at: ./
       - saucectl/saucectl-run:
           config-file: .sauce/sharding-config.yml
+
   test-xcuitest-on-simulator:
     docker:
       - image: cimg/node:lts
     environment:
-      APP: DemoApp.ipa
-      TEST_APP: DemoAppUITests-Runner.ipa
+      APP: DemoApp.zip
+      TEST_APP: DemoAppUITests-Runner.zip
     steps:
       - checkout
       - attach_workspace:
