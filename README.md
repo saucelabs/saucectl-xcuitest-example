@@ -92,7 +92,9 @@ saucectl run -c .sauce/sharding-config.yml
 ## The Config
 
 [Follow me](.sauce/config.yml) if you'd like to see how saucectl is configured for this repository.
+
 [Sharding Config](.sauce/sharding-config.yml) if you'd like to see how saucectl is configured to run XCUITest in parallel.
+
 [Simulator Config](.sauce/simulator-config.yml) if you'd like to see how saucectl is configured to run XCUITest with a simulator.
 
 Our IDE Integrations (e.g. [Visual Studio Code](https://docs.saucelabs.com/dev/cli/saucectl/usage/ide/vscode/)) can help you out by validating the YAML files and provide handy suggestions, so make sure to check them out!
