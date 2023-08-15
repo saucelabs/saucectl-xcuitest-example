@@ -55,17 +55,17 @@ jobs:
             pushd build/Build/Products/Debug-iphonesimulator
             mkdir Payload
             cp -r DemoApp.app Payload
-            zip --symlinks -r DemoApp.zip Payload
+            zip --symlinks -r DemoApp-Simulator.zip Payload
             rm -rf Payload; mkdir Payload
             cp -r DemoAppUITests-Runner.app Payload/
-            zip --symlinks -r DemoAppUITests-Runner.zip Payload
+            zip --symlinks -r DemoAppUITests-Runner-Simulator.zip Payload
             mv *.zip ../../../../../
             popd
       - persist_to_workspace:
           root: ./
           paths:
-            - DemoApp.zip
-            - DemoAppUITests-Runner.zip
+            - DemoApp-Simulator.zip
+            - DemoAppUITests-Runner-Simulator.zip
 
   test-xcuitest-on-rdc:
     docker:
@@ -97,8 +97,8 @@ jobs:
     docker:
       - image: cimg/node:lts
     environment:
-      APP: DemoApp.zip
-      TEST_APP: DemoAppUITests-Runner.zip
+      APP: DemoApp-Simulator.zip
+      TEST_APP: DemoAppUITests-Runner-Simulator.zip
     steps:
       - checkout
       - attach_workspace:
