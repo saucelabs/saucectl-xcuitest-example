@@ -1,0 +1,45 @@
+apiVersion: v1alpha
+kind: xcuitest
+sauce:
+  region: us-west-1
+  concurrency: 3
+  metadata:
+    tags:
+      - e2e
+      - release team
+      - other tag
+    build: Release $CI_COMMIT_SHORT_SHA
+
+xcuitest:
+  app: $APP
+  testApp: $TEST_APP
+
+suites:
+  - name: "saucy xcuitest - sims"
+    timeout: 10m
+    simulators:
+      # To ensure name accuracy, check the list of supported virtual devices:
+      # https://app.saucelabs.com/live/web-testing/virtual
+      - name: "iPhone 11 Simulator"
+        # The set of one or more versions of the device platform on which to run the test suite.
+        platformVersions:
+          - "16.2"
+  - name: "saucy xcuitest - sims - filter by class"
+    timeout: 10m
+    testOptions:
+      class:
+        - DemoAppUITests/DemoAppUITestsLaunchTests
+    simulators:
+      # To ensure name accuracy, check the list of supported virtual devices:
+      # https://app.saucelabs.com/live/web-testing/virtual
+      - name: "iPhone 11 Simulator"
+        # The set of one or more versions of the device platform on which to run the test suite.
+        platformVersions:
+          - "16.2"
+ 
+artifacts:
+  download:
+    when: always
+    match:
+      - "junit.xml"
+    directory: ./artifacts/

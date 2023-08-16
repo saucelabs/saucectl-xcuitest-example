@@ -3,7 +3,7 @@ orbs:
   saucectl: saucelabs/saucectl-run@1.0.0
 
 jobs:
-  build:
+  build-for-rdc:
     macos:
       xcode: "14.2"
     steps:
@@ -35,7 +35,35 @@ jobs:
             - DemoApp.ipa
             - DemoAppUITests-Runner.ipa
             - test_classes_and_tests.txt
-  test-xcuitest:
+
+  build-for-simulator:
+    macos:
+      xcode: "14.2"
+    steps:
+      - checkout
+      - run:
+          command: |
+            cd DemoApp
+            xcodebuild \
+              CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
+              clean build-for-testing \
+              -project DemoApp.xcodeproj \
+              -scheme "DemoApp" \
+              -sdk iphonesimulator \
+              -configuration Debug \
+              -derivedDataPath build
+            pushd build/Build/Products/Debug-iphonesimulator
+            zip --symlinks -r DemoApp-Simulator.zip DemoApp.app
+            zip --symlinks -r DemoAppUITests-Runner-Simulator.zip DemoAppUITests-Runner.app
+            mv *.zip ../../../../../
+            popd
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - DemoApp-Simulator.zip
+            - DemoAppUITests-Runner-Simulator.zip
+
+  test-xcuitest-on-rdc:
     docker:
       - image: cimg/node:lts
     environment:
@@ -61,14 +89,31 @@ jobs:
       - saucectl/saucectl-run:
           config-file: .sauce/sharding-config.yml
 
+  test-xcuitest-on-simulator:
+    docker:
+      - image: cimg/node:lts
+    environment:
+      APP: DemoApp-Simulator.zip
+      TEST_APP: DemoAppUITests-Runner-Simulator.zip
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
+      - saucectl/saucectl-run:
+          config-file: .sauce/simulator-config.yml
+
 workflows:
   version: 2
   default_workflow:
     jobs:
-      - build
-      - test-xcuitest:
+      - build-for-rdc
+      - build-for-simulator
+      - test-xcuitest-on-rdc:
           requires:
-            - build
+            - build-for-rdc
       - test-xcuitest-in-parallel:
           requires:
-            - build
+            - build-for-rdc
+      - test-xcuitest-on-simulator:
+          requires:
+            - build-for-simulator

@@ -15,7 +15,7 @@ env:
   TEST_LIST_FILE: test_classes_and_tests.txt
 
 jobs:
-  build:
+  build-for-rdc:
     runs-on: macos-12
     env:
       xcode-version: 14.2
@@ -55,8 +55,39 @@ jobs:
           name: test_classes_and_tests.txt
           path: DemoApp/test_classes_and_tests.txt
 
+  build-for-simulator:
+    runs-on: macos-12
+    env:
+      xcode-version: 14.2
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup XCode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: ${{ env.xcode-version }}
+      - name: Build XCUITest Artifacts
+        working-directory: DemoApp/
+        run: |
+          xcodebuild \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO \
+            clean build-for-testing \
+            -project DemoApp.xcodeproj \
+            -scheme "DemoApp" \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            -derivedDataPath build
+          cd build/Build/Products/Debug-iphonesimulator
+          zip --symlinks -r DemoApp-Simulator.zip DemoApp.app
+          zip --symlinks -r DemoAppUITests-Runner-Simulator.zip DemoAppUITests-Runner.app
+      - name: Upload ipa files
+        uses: actions/upload-artifact@v3
+        with:
+          name: DemoApp
+          path: DemoApp/build/Build/Products/Debug-iphonesimulator/*.zip
+
   test:
-    needs: build
+    needs: build-for-rdc
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -71,7 +102,7 @@ jobs:
           concurrency: 10
 
   test-in-parallel:
-    needs: build
+    needs: build-for-rdc
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -89,3 +120,22 @@ jobs:
         with:
           concurrency: 10
           config-file: .sauce/sharding-config.yml
+
+  test-with-simulator:
+    needs: build-for-simulator
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Download XCUITest Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: DemoApp
+      - name: Saucectl Run
+        uses: saucelabs/saucectl-run-action@v3
+        env:
+          APP: DemoApp-Simulator.zip
+          TEST_APP: DemoAppUITests-Runner-Simulator.zip
+        with:
+          concurrency: 10
+          config-file: .sauce/simulator-config.yml
