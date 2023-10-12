@@ -5,7 +5,7 @@ orbs:
 jobs:
   build-for-rdc:
     macos:
-      xcode: 15
+      xcode: 15.0.0
     steps:
       - checkout
       - run:
@@ -38,7 +38,7 @@ jobs:
 
   build-for-simulator:
     macos:
-      xcode: 15
+      xcode: 15.0.0
     steps:
       - checkout
       - run:
