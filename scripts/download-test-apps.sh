@@ -1,7 +1,7 @@
 # INSTALL SAUCECTL
 curl -L https://saucelabs.github.io/saucectl/install | bash
 
-# GET URL'S FOR SAMPLE SIMULATOR APP AND XCTEST APP FROM GITHUB
+# GET URL'S FOR SAMPLE REAL DEVICE APP AND XCTEST APP FROM GITHUB
 app_repo=saucelabs/my-demo-app-ios
 echo "Using sample apps from https://github.com/saucelabs/my-demo-app-ios/releases" 
 latest_tag=$(curl -s "https://api.github.com/repos/$app_repo/releases/latest" | grep -o '"tag_name": ".*"' | sed 's/"tag_name": "//' | sed 's/"$//')
