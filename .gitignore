@@ -2,6 +2,7 @@
 *.DS_Store
 
 artifacts/
+demo-apps/
 
 # Ignore Xcode related files
 build/
@@ -18,3 +19,4 @@ xcuserdata/
 */test_classes.txt
 */test_classes_and_tests.txt
 gitpod/bin/saucectl
+bin/
