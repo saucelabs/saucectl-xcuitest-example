@@ -1,3 +1,4 @@
+#!/bin/bash
 # INSTALL SAUCECTL
 curl -L https://saucelabs.github.io/saucectl/install | bash
 
