@@ -29,6 +29,8 @@ Simply check out this repo, set your XCUITest test bundles and run the appropria
 
 :bulb: We also provide [DemoApp](DemoApp/) to demonstrate the test workflow. Click [here](.github/workflows/test.yml) for more details on how to build your XCUITest test pipeline.
 
+To download prebuilt demo apps that run on real devices, run "sh ./scripts/download-test-apps.sh" and the apps will be downloaded to a directory called "demo-apps/".
+
 ### Build `DemoApp` for Real Device
 
 ```shell
