@@ -51,7 +51,7 @@ jobs:
       - name: Upload ipa files
         uses: actions/upload-artifact@v4
         with:
-          name: DemoApp
+          name: RDCDemoApp
           path: DemoApp/build/Build/Products/Debug-iphoneos/*.ipa
 
       - name: Upload testListFile
@@ -92,7 +92,7 @@ jobs:
       - name: Upload ipa files
         uses: actions/upload-artifact@v4
         with:
-          name: DemoApp
+          name: VDCDemoApp
           path: DemoApp/build/Build/Products/Debug-iphonesimulator/*.zip
 
   test:
@@ -105,7 +105,7 @@ jobs:
       - name: Download XCUITest Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: DemoApp
+          name: RDCDemoApp
 
       - name: Run saucectl
         uses: saucelabs/saucectl-run-action@v4
@@ -122,7 +122,7 @@ jobs:
       - name: Download XCUITest Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: DemoApp
+          name: RDCDemoApp
 
       - name: Download testListFile Artifacts
         uses: actions/download-artifact@v4
@@ -145,7 +145,7 @@ jobs:
       - name: Download XCUITest Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: DemoApp
+          name: VDCDemoApp
 
       - name: Run saucectl
         uses: saucelabs/saucectl-run-action@v4
