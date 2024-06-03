@@ -36,10 +36,14 @@ suites:
         # The set of one or more versions of the device platform on which to run the test suite.
         platformVersions:
           - "16.2"
- 
+
 artifacts:
   download:
     when: always
     match:
       - "junit.xml"
     directory: ./artifacts/
+
+reporters:
+  spotlight: # Prints an overview of failed or otherwise interesting jobs.
+    enabled: true

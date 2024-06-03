@@ -21,11 +21,14 @@ jobs:
       xcode-version: 14.2
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Setup XCode
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: ${{ env.xcode-version }}
+
       - name: Build XCUITest Artifacts
         working-directory: DemoApp/
         run: |
@@ -44,13 +47,15 @@ jobs:
           rm -rf Payload; mkdir Payload
           cp -r DemoAppUITests-Runner.app Payload/
           zip --symlinks -r DemoAppUITests-Runner.ipa Payload
+
       - name: Upload ipa files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: DemoApp
+          name: RDCDemoApp
           path: DemoApp/build/Build/Products/Debug-iphoneos/*.ipa
+
       - name: Upload testListFile
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test_classes_and_tests.txt
           path: DemoApp/test_classes_and_tests.txt
@@ -61,11 +66,14 @@ jobs:
       xcode-version: 14.2
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Setup XCode
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: ${{ env.xcode-version }}
+
       - name: Build XCUITest Artifacts
         working-directory: DemoApp/
         run: |
@@ -80,10 +88,11 @@ jobs:
           cd build/Build/Products/Debug-iphonesimulator
           zip --symlinks -r DemoApp-Simulator.zip DemoApp.app
           zip --symlinks -r DemoAppUITests-Runner-Simulator.zip DemoAppUITests-Runner.app
+
       - name: Upload ipa files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: DemoApp
+          name: VDCDemoApp
           path: DemoApp/build/Build/Products/Debug-iphonesimulator/*.zip
 
   test:
@@ -91,13 +100,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
       - name: Download XCUITest Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: DemoApp
-      - name: Saucectl Run
-        uses: saucelabs/saucectl-run-action@v3
+          name: RDCDemoApp
+
+      - name: Run saucectl
+        uses: saucelabs/saucectl-run-action@v4
         with:
           concurrency: 10
 
@@ -106,17 +117,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
       - name: Download XCUITest Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: DemoApp
+          name: RDCDemoApp
+
       - name: Download testListFile Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: test_classes_and_tests.txt
-      - name: Saucectl Run
-        uses: saucelabs/saucectl-run-action@v3
+
+      - name: Run saucectl
+        uses: saucelabs/saucectl-run-action@v4
         with:
           concurrency: 10
           config-file: .sauce/sharding-config.yml
@@ -126,13 +140,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
       - name: Download XCUITest Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: DemoApp
-      - name: Saucectl Run
-        uses: saucelabs/saucectl-run-action@v3
+          name: VDCDemoApp
+
+      - name: Run saucectl
+        uses: saucelabs/saucectl-run-action@v4
         env:
           APP: DemoApp-Simulator.zip
           TEST_APP: DemoAppUITests-Runner-Simulator.zip
