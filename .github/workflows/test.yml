@@ -1,6 +1,7 @@
-name: saucectl XCUITest tests
+name: Test
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches:
