@@ -44,6 +44,8 @@ xcodebuild \
   -sdk iphoneos \
   -configuration Debug \
   -derivedDataPath build
+
+cd ..
 ```
 
 ### Run XCUITest on Sauce Cloud Real Device
